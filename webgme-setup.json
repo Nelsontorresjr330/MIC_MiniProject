@@ -1,4 +1,12 @@
 {
-  "components": {},
-  "dependencies": {}
+  "components": {
+    "seeds": {
+      "DIGITS": {
+        "src": "src/seeds/DIGITS"
+      }
+    }
+  },
+  "dependencies": {
+    "seeds": {}
+  }
 }
