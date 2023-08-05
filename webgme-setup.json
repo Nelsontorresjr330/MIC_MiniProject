@@ -13,10 +13,17 @@
         "secondary": false,
         "widget": "src/visualizers/widgets/OneViz"
       }
+    },
+    "plugins": {
+      "OnePlugin": {
+        "src": "src/plugins/OnePlugin",
+        "test": "test/plugins/OnePlugin"
+      }
     }
   },
   "dependencies": {
     "seeds": {},
-    "visualizers": {}
+    "visualizers": {},
+    "plugins": {}
   }
 }
