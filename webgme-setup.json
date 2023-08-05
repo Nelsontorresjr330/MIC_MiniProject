@@ -19,11 +19,19 @@
         "src": "src/plugins/OnePlugin",
         "test": "test/plugins/OnePlugin"
       }
-    }
+    },
+    "routers": {}
   },
   "dependencies": {
     "seeds": {},
     "visualizers": {},
-    "plugins": {}
+    "plugins": {},
+    "routers": {
+      "BindingsDocs": {
+        "project": "webgme-bindings",
+        "path": "node_modules/webgme-bindings/src/routers/BindingsDocs",
+        "mount": "bindings-docs"
+      }
+    }
   }
 }
