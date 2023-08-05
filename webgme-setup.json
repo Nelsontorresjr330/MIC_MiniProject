@@ -4,9 +4,19 @@
       "DIGITS": {
         "src": "src/seeds/DIGITS"
       }
+    },
+    "visualizers": {
+      "OneViz": {
+        "src": "panels/OneViz/OneVizPanel",
+        "title": "OneViz",
+        "panel": "src/visualizers/panels/OneViz",
+        "secondary": false,
+        "widget": "src/visualizers/widgets/OneViz"
+      }
     }
   },
   "dependencies": {
-    "seeds": {}
+    "seeds": {},
+    "visualizers": {}
   }
 }

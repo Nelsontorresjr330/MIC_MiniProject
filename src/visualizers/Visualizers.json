@@ -1,1 +1,8 @@
-[]
+[
+  {
+    "id": "OneViz",
+    "title": "OneViz",
+    "panel": "panels/OneViz/OneVizPanel",
+    "DEBUG_ONLY": false
+  }
+]
