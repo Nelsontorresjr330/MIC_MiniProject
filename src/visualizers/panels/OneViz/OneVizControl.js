@@ -225,7 +225,7 @@ define([
             icon: 'glyphicon glyphicon-remove',
             clickFn: function (/*data*/) {
                 const context = _client.getCurrentPluginContext('undo');
-                context.managerConfig.activeNode = self._currentNodeParentId;
+                context.managerConfig.activeNode = self._currentNodeId;
                 context.managerConfig.namespace = null;
                 context.pluginConfig = {};
 
