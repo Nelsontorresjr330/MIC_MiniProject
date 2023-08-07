@@ -81,5 +81,5 @@ class checkValue(PluginBase):
       core.set_attribute(num[2],'value',num[0])
 
     self.util.save(root_node = core.get_root(active_node), commit_hash = self.commit_hash, branch_name = 'master')
-
+    logger.info("Values set!")
 

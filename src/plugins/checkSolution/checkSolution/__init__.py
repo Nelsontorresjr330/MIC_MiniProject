@@ -58,24 +58,6 @@ class checkSolution(PluginBase):
       for ops in operations.values():
         if ops_in_order[len(ops_in_order)-1][2] == ops[1]:
           ops_in_order[len(ops_in_order)] = ops
-      
-    for ops in ops_in_order.values():
-      for num in numbers:
-        if num == ops[1]["nodePath"]:
-          if ops[0] == 'Subtraction':
-            numbers[ops[2]["nodePath"]][0] = numbers[ops[1]["nodePath"]][0] - numbers[ops[2]["nodePath"]][0]
-            numbers[ops[1]["nodePath"]][0] = -1
-          elif ops[0] == 'Addition':
-            numbers[ops[2]["nodePath"]][0] = numbers[ops[1]["nodePath"]][0] + numbers[ops[2]["nodePath"]][0]
-            numbers[ops[1]["nodePath"]][0] = -1
-          elif ops[0] == 'Multiplication':
-            numbers[ops[2]["nodePath"]][0] = numbers[ops[1]["nodePath"]][0] * numbers[ops[2]["nodePath"]][0]
-            numbers[ops[1]["nodePath"]][0] = -1
-          elif ops[0] == 'Division':
-            numbers[ops[2]["nodePath"]][0] = numbers[ops[1]["nodePath"]][0] / numbers[ops[2]["nodePath"]][0]
-            numbers[ops[1]["nodePath"]][0] = -1
-          else:
-            logger.info(ops[0] + 'does not exist')
     
     sf = False
     
