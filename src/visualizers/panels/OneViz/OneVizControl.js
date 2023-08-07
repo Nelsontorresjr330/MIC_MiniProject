@@ -64,11 +64,11 @@ define([
 
             self._widget.setTitle(desc.name.toUpperCase());
 
-            if (typeof desc.parentId === 'string') {
-                self.$btnModelHierarchyUp.show();
+            /*if (typeof desc.parentId === 'string') {
+                self.$btnUndo.show();
             } else {
-                self.$btnModelHierarchyUp.hide();
-            }
+                self.$btnUndo.hide();
+            }*/
 
             self._currentNodeParentId = desc.parentId;
 
@@ -211,6 +211,7 @@ define([
     };
 
     OneVizControl.prototype._initializeToolbar = function () {
+        const {_client, _logger} = this;
         var self = this,
             toolBar = WebGMEGlobal.Toolbar;
 
@@ -219,26 +220,43 @@ define([
         this._toolbarItems.push(toolBar.addSeparator());
 
         /************** Go to hierarchical parent button ****************/
-        this.$btnModelHierarchyUp = toolBar.addButton({
-            title: 'Go to parent',
-            icon: 'glyphicon glyphicon-circle-arrow-up',
+        this.$btnUndo = toolBar.addButton({
+            title: 'Undo',
+            icon: 'glyphicon glyphicon-remove',
             clickFn: function (/*data*/) {
-                WebGMEGlobal.State.registerActiveObject(self._currentNodeParentId);
+                const context = _client.getCurrentPluginContext('undo');
+                context.managerConfig.activeNode = self._currentNodeParentId;
+                context.managerConfig.namespace = null;
+                context.pluginConfig = {};
+
+                _client.runServerPlugin('undo', context, (err, result)=>{
+                    // console.log('export:', err, result);
+                    if (err === null && result && result.success) {
+                        //TODO: - there is nothing to do as the plugin updated the model
+                        //const newGamePath = result.messages[0].message;
+                        //WebGMEGlobal.State.registerActiveObject(newGamePath);
+                        //WebGMEGlobal.State.registerActiveVisualizer('OneViz');
+                        _logger.info('Success');
+                    } else {
+                        //TODO - make a proper way of handling this
+                        _logger.error('Failed to initiate undo', err);
+                    }
+                });
             }
         });
-        this._toolbarItems.push(this.$btnModelHierarchyUp);
-        this.$btnModelHierarchyUp.hide();
+        this._toolbarItems.push(this.$btnUndo);
+        this.$btnUndo.hide();
 
         /************** Checkbox example *******************/
 
-        this.$cbShowConnection = toolBar.addCheckBox({
+    /*    this.$cbShowConnection = toolBar.addCheckBox({
             title: 'toggle checkbox',
             icon: 'gme icon-gme_diagonal-arrow',
             checkChangedFn: function (data, checked) {
                 self._logger.debug('Checkbox has been clicked!');
             }
         });
-        this._toolbarItems.push(this.$cbShowConnection);
+        this._toolbarItems.push(this.$cbShowConnection);*/
 
         this._toolbarInitialized = true;
     };

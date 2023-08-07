@@ -18,6 +18,10 @@
       "OnePlugin": {
         "src": "src/plugins/OnePlugin",
         "test": "test/plugins/OnePlugin"
+      },
+      "undo": {
+        "src": "src/plugins/undo",
+        "test": "test/plugins/undo"
       }
     },
     "routers": {}
