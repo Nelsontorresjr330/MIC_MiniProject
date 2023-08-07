@@ -15,10 +15,6 @@
       }
     },
     "plugins": {
-      "OnePlugin": {
-        "src": "src/plugins/OnePlugin",
-        "test": "test/plugins/OnePlugin"
-      },
       "undo": {
         "src": "src/plugins/undo",
         "test": "test/plugins/undo"
@@ -30,6 +26,10 @@
       "checkSolution": {
         "src": "src/plugins/checkSolution",
         "test": "test/plugins/checkSolution"
+      },
+      "validPuzzle": {
+        "src": "src/plugins/validPuzzle",
+        "test": "test/plugins/validPuzzle"
       }
     },
     "routers": {}

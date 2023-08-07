@@ -264,7 +264,7 @@ define([
 
         this.$btnCheckSolution = toolBar.addButton({
             title: 'CheckSolution',
-            icon: 'glyphicon glyphicon-check',
+            icon: 'glyphicon glyphicon-thumbs-up',
             clickFn: function (/*data*/) {
                 const context = _client.getCurrentPluginContext('checkSolution');
                 context.managerConfig.activeNode = self._currentNodeId;
@@ -275,13 +275,34 @@ define([
                     if (err === null && result && result.success) {
                         _logger.info('Success');
                     } else {
-                        _logger.error('Failed to initiate SetValues', err);
+                        _logger.error('Failed to initiate CheckSolution', err);
                     }
                 });
             }
         });
         this._toolbarItems.push(this.$btnCheckSolution);
         this.$btnCheckSolution.hide();
+
+        this.$btnValidPuzzle = toolBar.addButton({
+            title: 'validPuzzle',
+            icon: 'glyphicon glyphicon-check',
+            clickFn: function (/*data*/) {
+                const context = _client.getCurrentPluginContext('validPuzzle');
+                context.managerConfig.activeNode = self._currentNodeId;
+                context.managerConfig.namespace = null;
+                context.pluginConfig = {};
+
+                _client.runServerPlugin('validPuzzle', context, (err, result)=>{
+                    if (err === null && result && result.success) {
+                        _logger.info('Success');
+                    } else {
+                        _logger.error('Failed to initiate validPuzzle', err);
+                    }
+                });
+            }
+        });
+        this._toolbarItems.push(this.$btnValidPuzzle);
+        this.$btnValidPuzzle.hide();
 
         this._toolbarInitialized = true;
     };
