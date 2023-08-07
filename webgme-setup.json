@@ -26,6 +26,10 @@
       "checkValue": {
         "src": "src/plugins/checkValue",
         "test": "test/plugins/checkValue"
+      },
+      "checkSolution": {
+        "src": "src/plugins/checkSolution",
+        "test": "test/plugins/checkSolution"
       }
     },
     "routers": {}

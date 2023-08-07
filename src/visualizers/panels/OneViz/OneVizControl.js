@@ -262,6 +262,27 @@ define([
         this._toolbarItems.push(this.$btnCheckValue);
         this.$btnCheckValue.hide();
 
+        this.$btnCheckSolution = toolBar.addButton({
+            title: 'CheckSolution',
+            icon: 'glyphicon glyphicon-check',
+            clickFn: function (/*data*/) {
+                const context = _client.getCurrentPluginContext('checkSolution');
+                context.managerConfig.activeNode = self._currentNodeId;
+                context.managerConfig.namespace = null;
+                context.pluginConfig = {};
+
+                _client.runServerPlugin('checkSolution', context, (err, result)=>{
+                    if (err === null && result && result.success) {
+                        _logger.info('Success');
+                    } else {
+                        _logger.error('Failed to initiate SetValues', err);
+                    }
+                });
+            }
+        });
+        this._toolbarItems.push(this.$btnCheckSolution);
+        this.$btnCheckSolution.hide();
+
         this._toolbarInitialized = true;
     };
 
