@@ -1,4 +1,4 @@
-# MyMiniProject
+# MyMiniProject - Digits Design Studio
 ## Installation and Deployment
 First, install the MyMiniProject following:
 - [NodeJS](https://nodejs.org/en/) (LTS recommended)
@@ -10,10 +10,13 @@ You may need to run `npm install` or `npm upgrade` to make sure everything is up
 
 Then, run `webgme start` from the project root to start . Finally, navigate to `http://localhost:8888` to start using MyMiniProject!
 
-# PlugIns
+## PlugIns
 All the PlugIns are accessable via the OneViz visualizer toolbar
  * Undo Button : Deletes the most recent operation
  * SetValues Button : Updates the values on the nodes to display their calculated values
  * CheckSolution Button : Checks to see if the target has been reached (Currently displays result in logger)
  * ValidPuzzle Button : Checks to make sure there are no more than 5 operations, exactly 6 nodes and all values are not -1 each (Currently displays result in logger)
  * GeneratePuzzles Button :  MUST BE USED IN DIGITS META CONTEXT, NOT PUZZLE CONTEXT! Generates 6 puzzles with random values and targets each, does not necessarily have a solvable solution.
+
+##Visualization
+At the moment, the main visualization is the OneVie panel. Currently still under development since I have little to no React.JS experience but it does contain working toolbar buttons to run the aforementioned plugins, to see the results, you will need to swap back to the composition visualizer though.
