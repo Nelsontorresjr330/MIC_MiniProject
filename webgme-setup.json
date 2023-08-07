@@ -22,6 +22,10 @@
       "undo": {
         "src": "src/plugins/undo",
         "test": "test/plugins/undo"
+      },
+      "checkValue": {
+        "src": "src/plugins/checkValue",
+        "test": "test/plugins/checkValue"
       }
     },
     "routers": {}

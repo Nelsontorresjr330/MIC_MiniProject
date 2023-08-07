@@ -230,15 +230,9 @@ define([
                 context.pluginConfig = {};
 
                 _client.runServerPlugin('undo', context, (err, result)=>{
-                    // console.log('export:', err, result);
                     if (err === null && result && result.success) {
-                        //TODO: - there is nothing to do as the plugin updated the model
-                        //const newGamePath = result.messages[0].message;
-                        //WebGMEGlobal.State.registerActiveObject(newGamePath);
-                        //WebGMEGlobal.State.registerActiveVisualizer('OneViz');
                         _logger.info('Success');
                     } else {
-                        //TODO - make a proper way of handling this
                         _logger.error('Failed to initiate undo', err);
                     }
                 });
@@ -247,16 +241,26 @@ define([
         this._toolbarItems.push(this.$btnUndo);
         this.$btnUndo.hide();
 
-        /************** Checkbox example *******************/
+        this.$btnCheckValue = toolBar.addButton({
+            title: 'SetValues',
+            icon: 'glyphicon glyphicon-refresh',
+            clickFn: function (/*data*/) {
+                const context = _client.getCurrentPluginContext('checkValue');
+                context.managerConfig.activeNode = self._currentNodeId;
+                context.managerConfig.namespace = null;
+                context.pluginConfig = {};
 
-    /*    this.$cbShowConnection = toolBar.addCheckBox({
-            title: 'toggle checkbox',
-            icon: 'gme icon-gme_diagonal-arrow',
-            checkChangedFn: function (data, checked) {
-                self._logger.debug('Checkbox has been clicked!');
+                _client.runServerPlugin('checkValue', context, (err, result)=>{
+                    if (err === null && result && result.success) {
+                        _logger.info('Success');
+                    } else {
+                        _logger.error('Failed to initiate SetValues', err);
+                    }
+                });
             }
         });
-        this._toolbarItems.push(this.$cbShowConnection);*/
+        this._toolbarItems.push(this.$btnCheckValue);
+        this.$btnCheckValue.hide();
 
         this._toolbarInitialized = true;
     };
