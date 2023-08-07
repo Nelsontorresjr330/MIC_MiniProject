@@ -304,6 +304,27 @@ define([
         this._toolbarItems.push(this.$btnValidPuzzle);
         this.$btnValidPuzzle.hide();
 
+        this.$btnGeneratePuzzles = toolBar.addButton({
+            title: 'generatePuzzles',
+            icon: 'glyphicon glyphicon-list-alt',
+            clickFn: function (/*data*/) {
+                const context = _client.getCurrentPluginContext('generatePuzzles');
+                context.managerConfig.activeNode = self._currentNodeId;
+                context.managerConfig.namespace = null;
+                context.pluginConfig = {};
+
+                _client.runServerPlugin('generatePuzzles', context, (err, result)=>{
+                    if (err === null && result && result.success) {
+                        _logger.info('Success');
+                    } else {
+                        _logger.error('Failed to initiate generatePuzzles', err);
+                    }
+                });
+            }
+        });
+        this._toolbarItems.push(this.$btnGeneratePuzzles);
+        this.$btnGeneratePuzzles.hide();
+
         this._toolbarInitialized = true;
     };
 

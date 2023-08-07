@@ -30,6 +30,10 @@
       "validPuzzle": {
         "src": "src/plugins/validPuzzle",
         "test": "test/plugins/validPuzzle"
+      },
+      "generatePuzzles": {
+        "src": "src/plugins/generatePuzzles",
+        "test": "test/plugins/generatePuzzles"
       }
     },
     "routers": {}
