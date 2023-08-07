@@ -18,5 +18,5 @@ All the PlugIns are accessable via the OneViz visualizer toolbar
  * ValidPuzzle Button : Checks to make sure there are no more than 5 operations, exactly 6 nodes and all values are not -1 each (Currently displays result in logger)
  * GeneratePuzzles Button :  MUST BE USED IN DIGITS META CONTEXT, NOT PUZZLE CONTEXT! Generates 6 puzzles with random values and targets each, does not necessarily have a solvable solution.
 
-##Visualization
+## Visualization
 At the moment, the main visualization is the OneVie panel. Currently still under development since I have little to no React.JS experience but it does contain working toolbar buttons to run the aforementioned plugins, to see the results, you will need to swap back to the composition visualizer though.
